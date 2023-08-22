@@ -2,7 +2,7 @@
 
 ## Practice the Doubly Linked List
 
-**This project is written in the C programming language and focuses on creating a doubly linked list material management program.**
+**This project is written in the C programming language and focuses on creating a material management program. based on a doubly linked list. **
 
 ### Goal
 
