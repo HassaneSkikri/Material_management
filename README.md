@@ -8,7 +8,7 @@
 
 **The goal of this project is to manage materials using a doubly linked list data structure.**
 
-#### Step 1 :
+#### Step 1: Data Structure
 
 **Define  the data structure for material information:**
 
@@ -22,7 +22,7 @@ struct material {
   struct material* following;
 };
 ```
-#### Step 2 :
+#### Step 2: 
 
 **define the structure of the doubly linked list to store the material:**
 
@@ -33,7 +33,7 @@ struct list {
   int size;
 };
 ```
-#### Step 4 :
+#### Step 3: Basic List Manipulation Functions
 
 **Implement the following basic functions for manipulating the list of materials:**
 
@@ -45,7 +45,7 @@ struct list {
 - ✅ `delete_end(list*)`: Deletes the last item in the list.
 - ✅ `display_list(list*)`: Displays the items in the list.
 
-#### Step 5 :
+#### Step 4: Material Management Functions
 
 **Implement the following  functions for the management of the materials:**
 
@@ -54,7 +54,7 @@ struct list {
 - ✅ `remove_material(list*, int)`: Deletes a material from the list.
 - ✅ `find_material(list*, int)`: Searches for material in the list by its identifier.
 
-#### Step 6 :
+#### Step 5: Sorting Functions
 
 **Implement sorting functions applied to this doubly linked list, in this case, the functions:**
 
@@ -63,14 +63,14 @@ struct list {
 - ✅ `sort_by_price(list*)`: Sorts the list by ascending price.
 - ✅ `sort_by_quantity(list*)`: Sorts the list by increasing quantity.
 
-#### Step 7 :
+#### Step 6: File I/O Functions
 
 **Add two functions for saving and loading:**
 
 - ✅ `save_list(list*, char*)`: Save the list to a file.
 - ✅ `load_list(list*, char*)`: Load the list from a file.
 
-#### Step 8 :
+#### Step 7 :
 
 ***We will write a main function that uses the previous functions to carry out the management of the materials. This function could have the following format:***
 ```c
