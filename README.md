@@ -24,7 +24,7 @@ struct material {
 ```
 #### Step 2: 
 
-**define the structure of the doubly linked list to store the material:**
+**Define the structure of the doubly linked list to store the material:**
 
 ```c
 struct list {
@@ -38,11 +38,13 @@ struct list {
 **Implement the following basic functions for manipulating the list of materials:**
 
 - ✅ `initialize_list()`: Initializes an empty list.
-- ✅ `initialize_list()`: Initializes an empty list.
 - ✅ `insert_start(list*, material)`: Inserts an item at the beginning of the list.
+- ✅ `insert_pos_before(list *list1, material)`:Inserts an item before a position .
+- ✅ `insert_pos_after(list *list1, material)`:Inserts an item after a position .
 - ✅ `insert_end(list*, material)`: Inserts an item at the end of the list.
 - ✅ `delete_start(list*)`: Removes the first item from the list.
 - ✅ `delete_end(list*)`: Deletes the last item in the list.
+- ✅ `delete_pos(list *list1, material)`:Delete an item en a position .
 - ✅ `display_list(list*)`: Displays the items in the list.
 
 #### Step 4: Material Management Functions
