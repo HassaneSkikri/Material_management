@@ -1,5 +1,12 @@
-#include "functions.h"
 #include "material_list.h"
+
+// Initialize the liste
+void initialize_list(list *list1)
+{
+    list1->start = NULL;
+    list1->end = NULL;
+    list1->size = 0;
+}
 
 //-------------------------------------------------------------------------------------------------
 // fill the material with the data

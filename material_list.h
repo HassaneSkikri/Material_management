@@ -30,14 +30,8 @@ typedef struct list
     int size;
 } list;
 
-//------------------------------------------------------------
-// Initialize the liste
 
-void initialize_list(list *list1)
-{
-    list1->start = NULL;
-    list1->end = NULL;
-    list1->size = 0;
-}
+
+
 
 #endif
