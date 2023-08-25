@@ -42,6 +42,108 @@ list *insert_start(list *list1, int identification, char name[], float price, in
 }
 
 //-------------------------------------------------------------------------------------------------
+// insertion at the end of the list
+list *insert_end(list *list1, int identification, char name[], float price, int quantity)
+{
+    material *nouveauElt = (material *)malloc(sizeof(material));
+    fill_material(nouveauElt, identification, name, price, quantity);
+    nouveauElt->previous = nouveauElt->following = NULL;
+    if (list1->end == NULL)
+    {
+        list1->start = list1->end = nouveauElt;
+    }
+    else
+    {
+        material *temp = list1->end;
+        temp->following = nouveauElt;
+        nouveauElt->previous = temp;
+        list1->end = nouveauElt;
+    }
+    list1->size++;
+    return list1;
+}
+//-------------------------------------------------------------------------------------------------
+// insert the item before the position
+list *insert_pos_before(list *list1, int identification, char name[], float price, int quantity, int position)
+{
+    material *nouveauElt = (material *)malloc(sizeof(material));
+    fill_material(nouveauElt, identification, name, price, quantity);
+    nouveauElt->previous = nouveauElt->following = NULL;
+    material *temp = list1->start;
+    if (temp == NULL)
+    {
+        list1->start = list1->end = nouveauElt;
+    }
+    else
+    {
+        while (temp != NULL && temp->id != position)
+        {
+            temp = temp->following;
+        }
+        if (temp->id == position)
+        {
+            nouveauElt->following = temp;
+            nouveauElt->previous = temp->previous;
+            if (temp->previous != NULL)
+            {
+                temp->previous->following = nouveauElt;
+            }
+            else
+            {
+                list1->start = nouveauElt;
+            }
+            temp->previous = nouveauElt;
+        }
+        else
+        {
+            printf("cette position nexiste pas \n");
+        }
+    }
+    list1->size++;
+    return list1;
+}
+//-------------------------------------------------------------------------------------------------
+// insert the item after the position
+list *insert_pos_after(list *list1, int identification, char name[], float price, int quantity, int position)
+{
+    material *nouveauElt = (material *)malloc(sizeof(material));
+    fill_material(nouveauElt, identification, name, price, quantity);
+    nouveauElt->previous = nouveauElt->following = NULL;
+    material *temp = list1->start;
+    if (temp == NULL)
+    {
+        list1->start = list1->end = nouveauElt;
+    }
+    else
+    {
+        while (temp != NULL && temp->id != position)
+        {
+            temp = temp->following;
+        }
+        if (temp->id == position)
+        {
+            nouveauElt->following = temp->following;
+            nouveauElt->previous = temp;
+            if (temp->following != NULL)
+            {
+                temp->following->previous = nouveauElt;
+            }
+            else
+            {
+                list1->end = nouveauElt; // Update the end pointer
+            }
+            temp->following = nouveauElt;
+        }
+
+        else
+        {
+            printf("the position %d not found \n", position);
+        }
+    }
+    list1->size++;
+    return list1;
+}
+//-------------------------------------------------------------------------------------------------
 // display the list
 void display_list(material *start)
 {
