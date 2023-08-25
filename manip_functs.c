@@ -96,7 +96,7 @@ list *insert_pos_before(list *list1, int identification, char name[], float pric
         }
         else
         {
-            printf("cette position nexiste pas \n");
+            printf("this position not existe \n");
         }
     }
     list1->size++;
@@ -144,6 +144,87 @@ list *insert_pos_after(list *list1, int identification, char name[], float price
     return list1;
 }
 //-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+//Delete the start of the list
+list *delete_start(list *list1)
+{
+    if (list1 == NULL)
+    {
+        printf("the list is empty \n");
+    }
+    else
+    {
+        material *temp = list1->start;
+        list1->start = temp->following;
+        temp->following->previous = NULL;
+        free(temp);
+    }
+    list1->size--;
+    return list1;
+}
+//------------------------------------------------------------
+// Delete the end of the list
+list *delete_end(list *list1)
+{
+    if (list1 == NULL)
+    {
+        printf("the list is empty \n");
+    }
+    else
+    {
+        material *temp = list1->end;
+        list1->end = temp->previous;
+        temp->previous->following = NULL;
+        free(temp);
+    }
+    list1->size--;
+    return list1;
+}
+//------------------------------------------------------------
+// delete a position of the list
+list *delete_pos(list *list1, int position)
+{
+    if (list1->start != NULL)
+    {
+        material *temp = list1->start;
+        while (temp != NULL && temp->id != position)
+        {
+            temp = temp->following;
+        }
+        if (temp != NULL)
+        {
+            if (temp->previous == NULL)
+            {
+                list1->start = temp->following;
+            }
+            else
+            {
+                temp->previous->following = temp->following;
+            }
+            if (temp->following == NULL)
+            {
+                list1->end = temp->previous;
+            }
+            else
+            {
+                temp->following->previous = temp->previous;
+            }
+            free(temp);
+        }
+        else
+        {
+            printf("this id is not exist.\n");
+        }
+    }
+    else
+    {
+        printf("the list is empty.\n");
+    }
+    list1->size--;
+    return list1;
+}
 // display the list
 void display_list(material *start)
 {

@@ -9,8 +9,11 @@ list *insert_start(list *list1, int identification, char name[], float price, in
 list *insert_end(list *list1, int identification, char name[],float price,int quantity);
 list *insert_pos_before(list *list1, int identification, char name[], float price, int quantity, int position);
 list *insert_pos_after(list *list1, int identification, char name[], float price, int quantity, int position);
-
-
+//--------------------------------------------------------------------------------------------------------------
+list *delete_start(list *list1);
+list *delete_end(list *list1);
+list *delete_pos(list *list1, int position);
+//--------------------------------------------------------------------------------------------------------------
 void display_list(material *start);
 
 #endif

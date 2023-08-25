@@ -14,6 +14,8 @@ int main(int argc, char const *argv[])
     list1 = insert_pos_before(list1, 9, "SKIKRIE", 466, 30,1);
 
     display_list(list1->start);
+    list1 = delete_pos(list1,3);
+    display_list(list1->start);
 
     return 0;
 }
