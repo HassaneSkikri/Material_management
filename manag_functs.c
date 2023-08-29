@@ -10,7 +10,7 @@ void filling_data(material *new_stock)
     fgets(new_stock->name, sizeof(new_stock->name), stdin);
     new_stock->name[strcspn(new_stock->name, "\n")] = '\0';
     printf("Enter the price of the product: ");
-    scanf("%f", &new_stock->price);
+    scanf("%.2f", &new_stock->price);
     getchar();
     printf("Enter the quantity: ");
     scanf("%d", &new_stock->quantity);
@@ -22,7 +22,7 @@ void filling_data(material *new_stock)
 list *add_material(list *list1)
 {
     int i = 0, nbr, position;
-    int choix;
+    int choice;
     printf("---------menu---------------\n");
     printf("hello! what do you want ?\n");
     printf("1.To add material at the start\n");
@@ -30,11 +30,11 @@ list *add_material(list *list1)
     printf("3.To add material after a position \n");
     printf("4.To add material before a position \n");
     printf("enter your choice please ?\n");
-    scanf("%d", &choix);
+    scanf("%d", &choice);
     printf("how much material do you want to add? ");
     scanf("%d", &nbr);
 
-    switch (choix)
+    switch (choice)
     {
 
     case 1:
@@ -92,7 +92,7 @@ list *add_material(list *list1)
 // remove a material
 list *remove_material(list *list1)
 {
-    int choix;
+    int choice;
     int position;
     material *stock[max];
     printf("---------menu---------------\n");
@@ -101,8 +101,8 @@ list *remove_material(list *list1)
     printf("2.delete material at the end\n");
     printf("3.Delete material at a position\n ");
     printf("Enter your choice\n");
-    scanf("%d", &choix);
-    switch (choix)
+    scanf("%d", &choice);
+    switch (choice)
     {
     case 1:
         list1 = delete_start(list1);
@@ -127,9 +127,9 @@ list *remove_material(list *list1)
 // modify an existing material in the list
 list *modify_material(list *list1)
 {
-    material *temp = (material *)malloc(sizeof(material));
-    temp = list1->start;
-    int choix;
+
+    material *temp = list1->start;
+    int choice;
     int id, new_id;
     char name[40], new_name[40];
     float price, new_price;
@@ -145,8 +145,8 @@ list *modify_material(list *list1)
         printf("4.Modify the quantity\n");
         printf("5.exit from the programme\n");
         printf("Enter your choice\n");
-        scanf("%d", &choix);
-        switch (choix)
+        scanf("%d", &choice);
+        switch (choice)
         {
         case 1:
             printf("Enter the Id that you want to change\n");
@@ -188,7 +188,7 @@ list *modify_material(list *list1)
             break;
         case 3:
             printf("Enter the price that you want to change\n");
-            scanf("%f", &price);
+            scanf("%.2f", &price);
             while (temp != NULL && temp->price != price)
             {
                 temp = temp->following;
@@ -223,13 +223,112 @@ list *modify_material(list *list1)
             }
             break;
         case 5:
-            choix = 0;
+            choice = 0;
             break;
         default:
             printf("oops this choice does not exist\n");
             break;
         }
-    } while (choix >= 1 && choix <= 4); // Only repeat for valid choices
+    } while (choice >= 1 && choice <= 4); // Only repeat for valid choices
 
     return list1;
+}
+
+//------------------------------------------------------------
+// recherche un material dans la list par son identifiant.
+void find_material(list *list1)
+{
+
+    int choice;
+    int id;
+    char name[40];
+    float price;
+    int quantity;
+    material *temp = list1->start;
+    do
+    {
+        printf("--------------menu-----------\n");
+        printf("hello! what do you want ?\n");
+        printf("1.find by id\n");
+        printf("2.find by name\n");
+        printf("3.find by price\n");
+        printf("4.find by quantity\n");
+        printf("5.exit from the programme\n");
+        printf("Enter your choice:\n");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("what is the id that you want to find :\n");
+            scanf("%d", &id);
+            while (temp != NULL && temp->id != id)
+            {
+                temp = temp->following;
+            }
+            if (temp->id == id)
+            {
+                printf("Your data is:\nThe size:%d\nId:%d \nName: %s \nPrice %.2f \nQuantity %d\n", list1->size, temp->id, temp->name, temp->price, temp->quantity);
+            }
+            else
+            {
+                printf("Material with the specified ID not found.\n");
+            }
+            break;
+        case 2:
+            printf("what is the name that you want to find :\n");
+            scanf("%s", name);
+            getchar();
+            while (temp != NULL && strcmp(temp->name, name) != 0)
+            {
+                temp = temp->following;
+            }
+            if (strcmp(temp->name, name) == 0)
+            {
+                printf("Your data is:\nThe size:%d\nId:%d \nName: %s \nPrice %.2f \nQuantity %d\n", list1->size, temp->id, temp->name, temp->price, temp->quantity);
+            }
+            else
+            {
+                printf("Material with the specified name not found.\n");
+            }
+            break;
+        case 3:
+            printf("what is the price that you want to find :\n");
+            scanf("%.2f", &price);
+            while (temp != NULL && temp->price != price)
+            {
+                temp = temp->following;
+            }
+            if (temp->price == price)
+            {
+                printf("Your data is:\nThe size:%d\nId:%d \nName: %s \nPrice %.2f \nQuantity %d\n", list1->size, temp->id, temp->name, temp->price, temp->quantity);
+            }
+            else
+            {
+                printf("Material with the specified price not found.\n");
+            }
+            break;
+        case 4:
+            printf("what is the quantity that you want to find :\n");
+            scanf("%d", &quantity);
+            while (temp != NULL && temp->quantity != quantity)
+            {
+                temp = temp->following;
+            }
+            if (temp->quantity == quantity)
+            {
+                printf("Your data is:\nThe size:%d\nId:%d \nName: %s \nPrice %.2f \nQuantity %d\n", list1->size, temp->id, temp->name, temp->price, temp->quantity);
+            }
+            else
+            {
+                printf("Material with the specified quantity not found.\n");
+            }
+            break;
+        case 5:
+            choice = 0;
+            break;
+        default:
+            printf("oops this choice does not exist\n");
+            break;
+        }
+    } while (choice >= 1 && choice <= 5);
 }
