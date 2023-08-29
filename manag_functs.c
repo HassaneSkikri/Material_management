@@ -123,3 +123,113 @@ list *remove_material(list *list1)
     }
     return list1;
 }
+//------------------------------------------------------------
+// modify an existing material in the list
+list *modify_material(list *list1)
+{
+    material *temp = (material *)malloc(sizeof(material));
+    temp = list1->start;
+    int choix;
+    int id, new_id;
+    char name[40], new_name[40];
+    float price, new_price;
+    int quantity, new_quantity;
+    do
+    {
+
+        printf("--------------menu-----------\n");
+        printf("hello! what do you want ?\n");
+        printf("1.Modify the id\n");
+        printf("2.Modify the name\n");
+        printf("3.Modify the price\n");
+        printf("4.Modify the quantity\n");
+        printf("5.exit from the programme\n");
+        printf("Enter your choice\n");
+        scanf("%d", &choix);
+        switch (choix)
+        {
+        case 1:
+            printf("Enter the Id that you want to change\n");
+            scanf("%d", &id);
+            while (temp != NULL && temp->id != id)
+            {
+                temp = temp->following;
+            }
+            if (temp != NULL)
+            {
+                printf("enter the new id:\n");
+                scanf("%d", &new_id);
+                temp->id = new_id;
+            }
+            else
+            {
+                printf("Material with the specified ID not found.\n");
+            }
+            break;
+        case 2:
+            printf("Enter the name that you want to change\n");
+            scanf("%s", name);
+            getchar();
+            while (temp != NULL && strcmp(temp->name, name) != 0)
+            {
+                temp = temp->following;
+            }
+            if (temp != NULL)
+            {
+                printf("enter the new name:\n");
+                scanf("%s", new_name);
+                getchar();
+                strcpy(temp->name, new_name);
+            }
+            else
+            {
+                printf("Material with the specified name not found.\n");
+            }
+            break;
+        case 3:
+            printf("Enter the price that you want to change\n");
+            scanf("%f", &price);
+            while (temp != NULL && temp->price != price)
+            {
+                temp = temp->following;
+            }
+            if (temp != NULL)
+            {
+                printf("enter the new price:\n");
+                scanf("%d", &new_price);
+                temp->price = new_price;
+            }
+            else
+            {
+                printf("Material with the specified price not found.\n");
+            }
+            break;
+        case 4:
+            printf("Enter the quantity that you want to change\n");
+            scanf("%d", &quantity);
+            while (temp != NULL && temp->quantity != quantity)
+            {
+                temp = temp->following;
+            }
+            if (temp != NULL)
+            {
+                printf("enter the new quantity:\n");
+                scanf("%d", &new_quantity);
+                temp->quantity = new_quantity;
+            }
+            else
+            {
+                printf("Material with the specified quantity not found.\n");
+            }
+            break;
+        case 5:
+            choix = 0;
+            break;
+        default:
+            printf("oops this choice does not exist\n");
+            break;
+        }
+    } while (choix >= 1 && choix <= 4); // Only repeat for valid choices
+
+    return list1;
+}
