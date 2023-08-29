@@ -87,3 +87,39 @@ list *add_material(list *list1)
     }
     return list1;
 }
+
+//------------------------------------------------------------
+// remove a material
+list *remove_material(list *list1)
+{
+    int choix;
+    int position;
+    material *stock[max];
+    printf("---------menu---------------\n");
+    printf("hello! what do you want ?\n");
+    printf("1.delete material at the start\n");
+    printf("2.delete material at the end\n");
+    printf("3.Delete material at a position\n ");
+    printf("Enter your choice\n");
+    scanf("%d", &choix);
+    switch (choix)
+    {
+    case 1:
+        list1 = delete_start(list1);
+        return list1;
+        break;
+    case 2:
+        list1 = delete_end(list1);
+        return list1;
+        break;
+    case 3:
+        printf("Enter the position that you want to insert \n");
+        scanf("%d", &position);
+        list1 = delete_pos(list1, position);
+        break;
+    default:
+        printf("oops this choice dont existe\n");
+        break;
+    }
+    return list1;
+}
