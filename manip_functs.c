@@ -1,5 +1,5 @@
 #include "material_list.h"
-
+#include "functions.h"
 // Initialize the liste
 void initialize_list(list *list1)
 {
@@ -240,7 +240,7 @@ void display_list(material *start)
         {
             printf("Id : %d\n", temp->id);
             printf("Name  : %s\n", temp->name);
-            printf("Price: %f\n", temp->price);
+            printf("Price: %.2f\n", temp->price);
             printf("Quantity : %d\n", temp->quantity);
             printf("---------------------\n");
             temp = temp->following;

@@ -15,5 +15,7 @@ list *delete_end(list *list1);
 list *delete_pos(list *list1, int position);
 //--------------------------------------------------------------------------------------------------------------
 void display_list(material *start);
-
+//--------------------------------------------------------------------------------------------------------------
+void filling_data(material *new_stock);
+list *add_material(list *list1);
 #endif
