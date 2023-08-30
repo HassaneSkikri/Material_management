@@ -20,4 +20,8 @@ list *add_material(list *list1);
 list *remove_material(list *list1);
 list *modify_material(list *list1);
 void find_material(list *list1);
+//--------------------------------------------------------------------------------------------------------------
+list *sort(list *list1);
+//--------------------------------------------------------------------------------------------------------------
+void save_list(list *list1);
 #endif
