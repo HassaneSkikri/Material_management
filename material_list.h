@@ -30,8 +30,4 @@ typedef struct list
     int size;
 } list;
 
-
-
-
-
 #endif
