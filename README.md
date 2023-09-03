@@ -8,8 +8,16 @@
 
 **The goal of this project is to manage materials using a doubly linked list data structure.**
 
+# Outline
+- [ 1 - Data Structure ](#1)
+- [ 2 - Define the structure of the doubly linked list to store the material](#2)
+- [3 - Basic List Manipulation Functions](#3)
+- [4 - Material Management Functions](#4)
+- [5 - Sorting Functions](#5)
+- [6 - File I/O Functions](#6)
+- [7 - Main Function](#7)
 #### Step 1: Data Structure
-
+<a name="1"></a>
 **Define  the data structure for material information:**
 
 ```c
@@ -23,7 +31,7 @@ struct material {
 };
 ```
 #### Step 2: 
-
+<a name="2"></a>
 **Define the structure of the doubly linked list to store the material:**
 
 ```c
@@ -34,7 +42,7 @@ struct list {
 };
 ```
 #### Step 3: Basic List Manipulation Functions
-
+<a name="3"></a>
 **Implement the following basic functions for manipulating the list of materials:**
 
 - ✅ `initialize_list()`: Initializes an empty list.
@@ -48,7 +56,7 @@ struct list {
 - ✅ `display_list(list*)`: Displays the items in the list.
 
 #### Step 4: Material Management Functions
-
+<a name="4"></a>
 **Implement the following  functions for the management of the materials:**
 
 - ✅ `add_material(list*)`: Adds a new material to the list.
@@ -57,7 +65,7 @@ struct list {
 - ✅ `find_material(list*, int)`: Searches for material in the list by its identifier.
 
 #### Step 5: Sorting Functions
-
+<a name="5"></a>
 **Implement sorting functions applied to this doubly linked list, in this case, the functions:**
 
 - ✅ `sort_by_id(list*)`: Sorts the list by ascending identifier.
@@ -66,14 +74,14 @@ struct list {
 - ✅ `sort_by_quantity(list*)`: Sorts the list by increasing quantity.
 
 #### Step 6: File I/O Functions
-
+<a name="6"></a>
 **Add two functions for saving and loading:**
 
 - ✅ `save_list(list*, char*)`: Save the list to a file.
 - ✅ `load_list(list*, char*)`: Load the list from a file.
 
 #### Step 7 :
-
+<a name="7"></a>
 ***We will write a main function that uses the previous functions to carry out the management of the materials. This function could have the following format:***
 ```c
 int main() {
