@@ -24,4 +24,5 @@ void find_material(list *list1);
 list *sort(list *list1);
 //--------------------------------------------------------------------------------------------------------------
 void save_list(list *list1);
+void load_list(list *list1, const char *filename);
 #endif
